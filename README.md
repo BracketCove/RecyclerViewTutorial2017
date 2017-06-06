@@ -1,5 +1,11 @@
-# RecyclerViewTutorial2017
+## RecyclerViewTutorial2017
 2017 RecyclerView Tutorial by Ryan Kay (wiseAss).
+
+**Part 1: Project OverView, is available to watch here:**
+
+https://www.youtube.com/watch?v=RfTJ2SePYaU&feature=youtu.be
+
+**Part 2: Basic RecyclerView, is being worked on right now**
 
 Welcome to my Android RecyclerView Tutorial. About a year ago, I got so pissed off at how overly complicated it was to get a decent RecyclerView running (which is also my fault for not being a better learner), that I decided to make series on Youtube about it. Much to my surprise, my long winded explanations and random tangents was something that a few people actually enjoyed. 
 
