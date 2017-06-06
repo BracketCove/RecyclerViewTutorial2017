@@ -7,7 +7,7 @@ While I didn't make any MAJOR mistakes with the old tutorial, I was still pretty
 
 Please bare in mind that while I'm getting ok at this Android thing, there's always room to learn. If there's anything in my Code which strikes you as being wrong or sub-optimal, please open a GitHub Issue and let me know about it! Bonus points if you take the time to actually explain why I'm wrong; I don't have a lot of spare time and I appreciate good feedback when I can get it.
 
-##For Beginners
+## For Beginners
 The Videos are made for you. I'll do my best to give you the following:
 - A fundamental understanding of how RecyclerViews and RecyclerView.Adapters work
 - A working App which implements the above
@@ -17,19 +17,19 @@ The Videos are made for you. I'll do my best to give you the following:
 - Some of the Layouts use ConstraintLayout
 - A West Coast Canadian accent.
 
-##For Not Beginners
+## For Not Beginners
 Read my code. I try to give everything good descriptive names, and I built my Software to basics standards of Software Architecture and SOLID Principles whenever possible.
 
-##For All
+## For All
 If nothing else, I hope this project demonstrates that while it's great to learn stuff from Videos and Textbooks, looking at/creating well documented Code with good naming Conventions, is something you should work towards. Whether you are looking at your own old Code, or working with other people, do us all a favour and don't just bang out a bunch of ugly crap with bad names and a Package Structure that doesn't make any sense. The names and Package Structure should help people understand your code, not piss them off. </rant>
 
-##About Me
+## About Me
 I'm an Indie Android Dev living in Victoria BC Canada. I'm a major Nerd, and rambling about Software is quite therapeutic for me, to the extent that I have a (https://www.youtube.com/user/gosuddr93)[Youtube Channel] mostly dedicated to that. I also do a Weekly Live Android Developer Q&A Series most Sundays at 8:00AM PDT (GMT -7). You can watch that at the aforementioned time (https://www.youtube.com/c/wiseAss/live)[here].
 
-*Please Read*
+**Please Read**
 I don't release this stuff for free because I don't like money. Actually, I could use all the help I can get to improve my Equipment, Production Quality, Content, and pay my living expenses. If my content is worth even the average fancy Hipster Coffee to you, then please Consider sending me a Fiver once on Patreon. 
 
-##Social Media
+## Social Media
 
 Facebook: https://www.facebook.com/wiseassblog/
 
