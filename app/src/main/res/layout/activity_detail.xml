@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root_list_detail"
+    tools:context="forgettery.wiseass.com.recyclerviewprebuilt.view.DetailActivity">
+
+    <!-- 19 -->
+
+    <View
+        android:id="@+id/cont_colored_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/div_center"
+         />
+
+
+    <TextView
+        style="@style/Text.Primary"
+        android:id="@+id/lbl_date_and_time_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="2:43AM 09/7/2018"
+        android:layout_above="@+id/lbl_message_body"
+        android:padding="16dp"
+         />
+
+    <View
+        style="@style/Text.Primary"
+        android:id="@+id/div_center"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_centerVertical="true"
+
+        />
+
+    <TextView
+        android:id="@+id/lbl_message_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/div_center"
+        android:padding="16dp"
+
+        tools:text="Check out content like Fragmented Podcast to expose yourself to the knowledge, ideas, and opinions of experts in your field"
+         />
+
+
+</RelativeLayout>

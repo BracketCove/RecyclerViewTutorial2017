@@ -1,0 +1,34 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/colorWindowBackground</item>
+    </style>
+
+
+    <!-- 9. Since some of our Views have attributes which are common, we can pull those common
+    attributes into their own styles. This way if I want to make the same Visual Changes to multiple
+    Views, I only need to change the Attribute in one spot. This also reduces the lines in your XML
+    Layouts, which is always a bonus -->
+
+    <style name="Text">
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="Text.Primary">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Text.Secondary">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+
+
+</resources>
