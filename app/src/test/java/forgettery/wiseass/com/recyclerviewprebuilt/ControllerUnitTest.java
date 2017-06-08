@@ -80,7 +80,13 @@ public class ControllerUnitTest {
 
         //This is the method we are testing
         controller.getListFromDataSource();
+
+        //Check how the Tested Class responds to the data it receives
+        //or test it's behaviour
+        Mockito.verify(view).setUpAdapterAndView(listOfData);
     }
+
+
 
     @Test
     public void onListItemClicked() {
