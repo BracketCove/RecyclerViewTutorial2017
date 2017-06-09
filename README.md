@@ -5,7 +5,7 @@
 
 https://www.youtube.com/watch?v=RfTJ2SePYaU&feature=youtu.be
 
-**Part 2: Basic RecyclerView, is being worked on right now**
+**Part 2: Basic RecyclerView
 
 https://www.youtube.com/watch?v=mw1wkYEJ1vI
 
