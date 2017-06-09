@@ -7,6 +7,8 @@ https://www.youtube.com/watch?v=RfTJ2SePYaU&feature=youtu.be
 
 **Part 2: Basic RecyclerView, is being worked on right now**
 
+https://www.youtube.com/watch?v=mw1wkYEJ1vI
+
 Welcome to my Android RecyclerView Tutorial. About a year ago, I got so pissed off at how overly complicated it was to get a decent RecyclerView running (which is also my fault for not being a better learner), that I decided to make series on Youtube about it. Much to my surprise, my long winded explanations and random tangents was something that a few people actually enjoyed. 
 
 While I didn't make any MAJOR mistakes with the old tutorial, I was still pretty much a Junior Developer on the Android Platform at that point. Since then, I've learned a great deal about making Android Apps, and even more about teaching people how to make them; so here you have it. 
