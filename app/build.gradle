@@ -36,11 +36,6 @@ dependencies {
      */
     compile 'de.hdodenhof:circleimageview:2.1.0'
 
-    /*
-    https://github.com/square/picasso
-    */
-    compile 'com.squareup.picasso:picasso:2.5.2'
-
     testCompile 'org.mockito:mockito-core:2.8.9'
     testCompile 'junit:junit:4.12'
 }
