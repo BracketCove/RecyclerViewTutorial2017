@@ -1,5 +1,7 @@
 package forgettery.wiseass.com.recyclerviewprebuilt.view;
 
+import android.view.View;
+
 import java.util.List;
 
 import forgettery.wiseass.com.recyclerviewprebuilt.data.ListItem;
@@ -13,8 +15,15 @@ import forgettery.wiseass.com.recyclerviewprebuilt.data.ListItem;
 
 public interface ViewInterface {
 
-    void startDetailActivity(String dateAndTime, String message, int colorResource);
+    void startDetailActivity(String dateAndTime, String message, int colorResource, View viewRoot);
 
     void setUpAdapterAndView(List<ListItem> listOfData);
 
+    void addNewListItemToView(ListItem newItem);
+
+    void deleteListItemAt(int position);
+
+    void showUndoSnackbar();
+
+    void insertListItemAt(int temporaryListItemPosition, ListItem temporaryListItem);
 }

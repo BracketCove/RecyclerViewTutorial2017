@@ -24,6 +24,7 @@ import forgettery.wiseass.com.recyclerviewprebuilt.R;
 public class FakeDataSource implements DataSourceInterface{
 
     private static final int sizeOfCollection = 12;
+    private Random random;
 
     private final String[] datesAndTimes = {
             "6:30AM 06/01/2017",
@@ -43,15 +44,16 @@ public class FakeDataSource implements DataSourceInterface{
                     "learn/teach different from each other. Find an explanation that speaks to you."
     };
 
-    private final int[] colours = {
-            R.color.RED,
-            R.color.BLUE,
-            R.color.GREEN,
-            R.color.YELLOW
+    private final int[] drawables = {
+            R.drawable.green_drawable,
+            R.drawable.red_drawable,
+            R.drawable.blue_drawable,
+            R.drawable.yellow_drawable
     };
 
 
     public FakeDataSource() {
+        random = new Random();
     }
 
     /**
@@ -65,22 +67,40 @@ public class FakeDataSource implements DataSourceInterface{
         Random random = new Random();
         //make 12 semi-random items
         for (int i = 0; i < 12; i++) {
-            //these will be 0, 1, 2, or 3
-            int randOne = random.nextInt(4);
-            int randTwo = random.nextInt(4);
-            int randThree = random.nextInt(4);
 
-            //creates a semi-random ListItem
-            ListItem listItem = new ListItem(
-                    datesAndTimes[randOne],
-                    messages[randTwo],
-                    colours[randThree]
+            listOfData.add(
+                    createNewListItem()
             );
-
-            //Add it to our collection (list)
-            listOfData.add(listItem);
         }
 
         return listOfData;
+    }
+
+    @Override
+    public ListItem createNewListItem() {
+
+        //these will be 0, 1, 2, or 3
+        int randOne = random.nextInt(4);
+        int randTwo = random.nextInt(4);
+        int randThree = random.nextInt(4);
+
+        //creates a semi-random ListItem
+        ListItem listItem = new ListItem(
+                datesAndTimes[randOne],
+                messages[randTwo],
+                drawables[randThree]
+        );
+
+        return listItem;
+    }
+
+    @Override
+    public void deleteListItem(ListItem listItem) {
+
+    }
+
+    @Override
+    public void insertListItem(ListItem temporaryListItem) {
+
     }
 }

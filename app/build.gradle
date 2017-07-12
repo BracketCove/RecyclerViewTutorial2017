@@ -29,6 +29,17 @@ dependencies {
 
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:design:25.3.1'
+
+    /*
+    https://github.com/hdodenhof/CircleImageView
+     */
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+
+    /*
+    https://github.com/square/picasso
+    */
+    compile 'com.squareup.picasso:picasso:2.5.2'
 
     testCompile 'org.mockito:mockito-core:2.8.9'
     testCompile 'junit:junit:4.12'

@@ -1,5 +1,7 @@
 package forgettery.wiseass.com.recyclerviewprebuilt.logic;
 
+import android.view.View;
+
 import forgettery.wiseass.com.recyclerviewprebuilt.data.DataSourceInterface;
 import forgettery.wiseass.com.recyclerviewprebuilt.data.ListItem;
 import forgettery.wiseass.com.recyclerviewprebuilt.view.ViewInterface;
@@ -40,6 +42,9 @@ import forgettery.wiseass.com.recyclerviewprebuilt.view.ViewInterface;
 
 public class Controller {
 
+    private ListItem temporaryListItem;
+    private int temporaryListItemPosition;
+
     /*
     All that's going on with these Variables, is that we're talking to both ListActivity and
     FakeDataSource through Interfaces. This has many benefits, but I'd invite you to research
@@ -65,11 +70,12 @@ public class Controller {
         getListFromDataSource();
     }
 
-    public void onListItemClick(ListItem selectedItem){
+    public void onListItemClick(ListItem selectedItem, View viewRoot){
         view.startDetailActivity(
                 selectedItem.getDateAndTime(),
                 selectedItem.getMessage(),
-                selectedItem.getColorResource()
+                selectedItem.getColorResource(),
+                viewRoot
                 );
     }
 
@@ -85,4 +91,50 @@ public class Controller {
     }
 
 
+    public void createNewListItem() {
+        /*
+        To simulate telling the DataSource to create a new record and waiting for it's response,
+        we'll simply have it return a new ListItem.
+
+        In a real App, I'd use RxJava 2 (or some other
+        API/Framework for Asynchronous Communication) to have the Datasource do this on the
+         IO thread, and respond via an Asynchronous callback to the Main thread.
+         */
+
+        ListItem newItem = dataSource.createNewListItem();
+
+        view.addNewListItemToView(newItem);
+    }
+
+    public void onListItemSwiped(int position, ListItem listItem) {
+        //ensure that the view and data layers have consistent state
+        dataSource.deleteListItem(listItem);
+        view.deleteListItemAt(position);
+
+        temporaryListItemPosition = position;
+        temporaryListItem = listItem;
+
+        view.showUndoSnackbar();
+
+    }
+
+    public void onUndoConfirmed() {
+        if (temporaryListItem != null){
+            //ensure View/Data consistency
+            dataSource.insertListItem(temporaryListItem);
+            view.insertListItemAt(temporaryListItemPosition, temporaryListItem);
+
+            temporaryListItem = null;
+            temporaryListItemPosition = 0;
+
+        } else {
+
+        }
+
+    }
+
+    public void onSnackbarTimeout() {
+        temporaryListItem = null;
+        temporaryListItemPosition = 0;
+    }
 }

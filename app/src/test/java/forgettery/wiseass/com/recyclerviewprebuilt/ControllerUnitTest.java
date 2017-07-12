@@ -1,5 +1,7 @@
 package forgettery.wiseass.com.recyclerviewprebuilt;
 
+import android.view.View;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,13 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import forgettery.wiseass.com.recyclerviewprebuilt.data.DataSourceInterface;
-import forgettery.wiseass.com.recyclerviewprebuilt.data.FakeDataSource;
 import forgettery.wiseass.com.recyclerviewprebuilt.data.ListItem;
 import forgettery.wiseass.com.recyclerviewprebuilt.logic.Controller;
-import forgettery.wiseass.com.recyclerviewprebuilt.view.ListActivity;
 import forgettery.wiseass.com.recyclerviewprebuilt.view.ViewInterface;
-
-import static org.junit.Assert.*;
 
 /**
  * Test Driven Development Bonus: Before writing the methods themselves (a.k.a. writing the
@@ -39,14 +37,20 @@ public class ControllerUnitTest {
     @Mock
     ViewInterface view;
 
+    @Mock
+    View testViewRoot;
+
     /**
      * Often times we'll want data to run our tests against. I like to define such Data as a series
      * of Static variables in the Test file itself for convenience.
      */
-    private static final ListItem testItem = new ListItem(
+    private static final ListItem TEST_ITEM = new ListItem(
             "6:30AM 06/01/2017",
             "Look at Open Source Projects",
-            R.color.RED);
+            R.drawable.red_drawable);
+
+
+    private static final int POSITION = 3;
 
     /**
      * Since we're testing our Controller Class, this one is the Real implementation!
@@ -70,7 +74,7 @@ public class ControllerUnitTest {
     public void onGetListDataSuccessful() {
         //Since we require a List<ListItem> to be returned by the dataSource, we can define it here:
         List<ListItem> listOfData = new ArrayList<>();
-        listOfData.add(testItem);
+        listOfData.add(TEST_ITEM);
 
 
         //This is where we tell our "Mocks" what to do when our Controller talks to them. Since they
@@ -90,34 +94,113 @@ public class ControllerUnitTest {
 
     @Test
     public void onListItemClicked() {
-        controller.onListItemClick(testItem);
+        controller.onListItemClick(TEST_ITEM, testViewRoot);
 
         Mockito.verify(view).startDetailActivity(
-                testItem.getDateAndTime(),
-                testItem.getMessage(),
-                testItem.getColorResource());
+                TEST_ITEM.getDateAndTime(),
+                TEST_ITEM.getMessage(),
+                TEST_ITEM.getColorResource(),
+                testViewRoot);
     }
 
 
-   // @Test
-   // public void onGetListDataUnsuccessful() {
-        /**************************
-         *
-         * Unit Test Homework:
-         *
-         * Implement the "View", so that when we don't recieve a List, it shows some kind of
-         * error message to the user. This is common practice that you should learn!
-         *
-         * I've written some hints you'll have to decipher into Java code:
-         *************************/
+    // @Test
+    // public void onGetListDataUnsuccessful() {
+    /**************************
+     *
+     * Unit Test Homework:
+     *
+     * Implement the "View", so that when we don't recieve a List, it shows some kind of
+     * error message to the user. This is common practice that you should learn!
+     *
+     * I've written some hints you'll have to decipher into Java code:
+     *************************/
+    //1 Set up your Mock dataSource
+
+    //2 Call the method you wish to test on the Controller
+
+    //3 Verify that the View has been told to show a message (I'd suggest showing a Toast for now)
+
+    //Profit???
+
+    // }
+
+    @Test
+    public void onCreateNewListItemClick() {
         //1 Set up your Mock dataSource
+        Mockito.when(dataSource.createNewListItem())
+                .thenReturn(TEST_ITEM);
 
         //2 Call the method you wish to test on the Controller
+        controller.createNewListItem();
 
-        //3 Verify that the View has been told to show a message (I'd suggest showing a Toast for now)
+        //3 Verify the behaviour of the View, based on the event
+        Mockito.verify(view).addNewListItemToView(
+                TEST_ITEM
+        );
+    }
 
-        //Profit???
+    /**
+     * User has swiped to delete an Item from the List. Since this operation may be accidental, it
+     * is necessary to provide a way for the User to Undo this operation. For now, we will
+     * 1. Temporarily store ListItem and position in adapter
+     * 2. Tell the Datasource to delete the Item (this ensures view/data layer consistency as much as
+     * possible)
+     *
+     * After that, the user will either undo, or the snackbar dialog will timeout (see tests below)
+     */
+    @Test
+    public void onListItemSwiped() {
 
-   // }
+        controller.onListItemSwiped(POSITION, TEST_ITEM);
+
+        //ensure consistency between View and Data Layers
+        Mockito.verify(dataSource).deleteListItem(TEST_ITEM);
+        Mockito.verify(view).deleteListItemAt(POSITION);
+
+        //give user the option to undo action
+        Mockito.verify(view).showUndoSnackbar();
+
+    }
+
+
+    /**
+     * When the User Undoes delete operation, we must do the following:
+     * - Add the temp item back into the Datasource
+     * - Animate the item back into the View
+     */
+    @Test
+    public void onUndoDeleteOperation() {
+        Mockito.when(dataSource.createNewListItem())
+                .thenReturn(TEST_ITEM);
+
+        //this test requires temporary position and item to be set. We can achieve this by calling
+        //controller.onListItemSwiped() first.
+        controller.onListItemSwiped(POSITION, TEST_ITEM);
+
+        controller.onUndoConfirmed();
+
+        Mockito.verify(dataSource).insertListItem(TEST_ITEM);
+
+        Mockito.verify(view).insertListItemAt(
+                POSITION,
+                TEST_ITEM
+        );
+    }
+
+    /**
+     * Since the only interaction with Controller is from methods called on it within the Test,
+     * there isn't really anything to verify against. However, we could use the Debugger to step
+     * through the Test if necessary.
+     *
+     *  ¯\_(ツ)_/¯
+     */
+    @Test
+    public void onSnackbarTimeout() {
+        controller.onListItemSwiped(POSITION, TEST_ITEM);
+
+        controller.onSnackbarTimeout();
+    }
+
 
 }
