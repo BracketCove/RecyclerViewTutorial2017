@@ -5,9 +5,21 @@
 
 https://www.youtube.com/watch?v=RfTJ2SePYaU&feature=youtu.be
 
-**Part 2: Basic RecyclerView
+
+
+**Part 2: Basic RecyclerView**
 
 https://www.youtube.com/watch?v=mw1wkYEJ1vI
+
+Preview:
+<img src="Screenshot_20170708-095736_framed.png" alt="Part Two Preview" width="270" height="480"/>
+
+**Part 3: Advanced RecyclerView Design and Features**
+
+https://www.youtube.com/watch?v=-xuhicDXMvw
+
+**Preview:**
+<img src="Screenshot_20170713-081532_framed.png" alt="Part Three Preview" width="270" height="480"/>
 
 Welcome to my Android RecyclerView Tutorial. About a year ago, I got so pissed off at how overly complicated it was to get a decent RecyclerView running (which is also my fault for not being a better learner), that I decided to make series on Youtube about it. Much to my surprise, my long winded explanations and random tangents was something that a few people actually enjoyed. 
 
